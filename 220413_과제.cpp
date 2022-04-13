@@ -51,21 +51,27 @@ int main()
 		switch (move)
 		{
 		case 'a':
-			if (player_y != 0) // y값이 0이 아니면
+			if (player_y != 0)
 			{
 				field[player_x][player_y - 1] = 'P';
 				field[player_x][player_y] = '#';
 				player_y = player_y - 1;
 
 			}
+			else
+				field[player_x][player_y] = 'P';
+
 			break;
 		case 'd':
-			if (player_y != 10)
+			if (player_y != 9)
 			{
 				field[player_x][player_y + 1] = 'P';
 				field[player_x][player_y] = '#';
 				player_y = player_y + 1;
 			}
+			else
+				field[player_x][player_y] = 'P';
+
 			break;
 		case 'w':
 			if (player_x != 0)
@@ -74,14 +80,19 @@ int main()
 				field[player_x][player_y] = '#';
 				player_x = player_x - 1;
 			}
+			else
+				field[player_x][player_y] = 'P';
+
 			break;
 		case 's':
-			if (player_x != 10)
+			if (player_x != 9)
 			{
 				field[player_x + 1][player_y] = 'P';
 				field[player_x][player_y] = '#';
 				player_x = player_x + 1;
 			}
+			else
+				field[player_x][player_y] = 'P';
 			break;
 
 		default:
@@ -90,6 +101,14 @@ int main()
 
 		if (field[end_x][end_y] == 'P')
 		{
+			system("cls"); // 탈출시 출력 1
+			for (int i = 0; i < 10; i++)
+			{
+				for (int j = 0; j < 10; j++)
+					cout << field[i][j];
+				cout << endl;
+			}
+
 			cout << "탈출에 성공했습니다!" << endl;
 			break;
 		}
